@@ -1,5 +1,5 @@
 import { Component, Input, ChangeDetectorRef, ViewChildren, ViewContainerRef, ElementRef } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, Title } from '@angular/platform-browser';
 import { Post } from 'src/app/interfaces/post';
 import { PostsService } from 'src/app/services/posts/posts.service';
 import katex from 'katex';
@@ -26,6 +26,7 @@ export class PostComponent {
     private sanitizer: DomSanitizer,
     private changes: ChangeDetectorRef,
     private view: ViewContainerRef,
+    private titleService: Title,
   ) { }
 
   ngOnInit(): void {
@@ -35,6 +36,8 @@ export class PostComponent {
   fetchPost() {
     this.postService.getPost(this._id).subscribe({
       next: (post) => {
+        this.titleService.setTitle(`${post.title} | Alphanumeric Sheep Pig`);
+
         this.post = post;
 
         this.changes.detectChanges();

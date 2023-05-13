@@ -18,10 +18,10 @@ const legacyUrlMatcher: UrlMatcher = (segments) => {
 };
 
 const routes: Routes = [
-  { path: '', component: SummaryComponent },
-  { path: 'post/:id', component: PostComponent },
-  { path: 'category/:id', component: CategoryComponent },
-  { path: 'about', component: AboutComponent },
+  { path: '', component: SummaryComponent, title: 'Alphanumeric Sheep Pig' },
+  { path: 'post/:id', component: PostComponent, title: 'Alphanumeric Sheep Pig' },
+  { path: 'category/:id', component: CategoryComponent, title: 'Alphanumeric Sheep Pig' },
+  { path: 'about', component: AboutComponent, title: 'About | Alphanumeric Sheep Pig' },
   { matcher: legacyUrlMatcher, redirectTo: 'post/:id' },
 ];
 

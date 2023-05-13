@@ -1,4 +1,5 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { PostSummary } from 'src/app/interfaces/post.summary';
 import { PostSummaryService } from 'src/app/services/post.summary/post.summary.service';
 
@@ -13,7 +14,8 @@ export class CategoryComponent {
   posts: any[] = [];
 
   constructor(
-    private postSummaryService: PostSummaryService
+    private postSummaryService: PostSummaryService,
+    private titleService: Title
   ) { }
 
   ngOnInit(): void {
@@ -27,6 +29,7 @@ export class CategoryComponent {
   }
 
   fetchPosts(): void {
+    this.titleService.setTitle(`${this.id} | Alphanumeric Sheep Pig`);
     this.postSummaryService.getIndex(this.id)
     .subscribe((category) => {
       this.posts = category.posts.sort((a: PostSummary, b: PostSummary) => {
