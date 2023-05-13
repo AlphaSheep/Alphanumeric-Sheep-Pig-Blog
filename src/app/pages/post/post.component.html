@@ -1,0 +1,28 @@
+<div *ngIf="post" class="post-container">
+
+  <div class="post-header">
+    <h1>{{post.title}}</h1>
+    <h2>{{getPublishedDate()}}</h2>
+  </div>
+
+  <div class="post-content"></div>
+
+  <div class="post-footer">
+    <div class="post-timestamp">
+      ... posted some time around {{getPublishedTime()}}.
+    </div>
+    <div class="post-index">
+      In the not very useful index under:
+      <span *ngFor="let tag of post.categories; let isLast=last" >
+        <a [routerLink]="['/category', tag]">{{tag}}</a>{{isLast ? '' : ', '}}
+      </span>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="!post">
+  Loading...
+</div>
+
+

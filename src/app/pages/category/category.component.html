@@ -1,0 +1,8 @@
+
+<h1>
+  Category: {{id}}
+</h1>
+
+<div *ngFor="let post of posts">
+  <app-post-snippet [id]="post.id" />
+</div>

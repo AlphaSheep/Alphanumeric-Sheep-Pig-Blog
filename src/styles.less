@@ -1,1 +1,104 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+@highlight-color: #7177c7;
+@secondary-highlight-color: #3f5cbf;
+@text-color: #a2a7a4;
+@background-color: #000000;
+
+@link-colour: #7177c7;
+@link-hover-colour: #62ccb6;
+
+body {
+
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 11pt;
+  line-height: 160%;
+  text-align: justify;
+  color: @text-color;
+  background-color: @background-color;
+
+  margin: 0;
+  padding: 0;
+
+  h1 {
+    color: @highlight-color;
+    margin-bottom: 1em;
+    text-align: center;
+  }
+
+  h2 {
+    font: normal bold 11px Verdana, Geneva, sans-serif;
+    color: @secondary-highlight-color;
+    text-transform: uppercase;
+    margin-bottom: 2em;
+    text-align: center;
+  }
+
+  a {
+    color: @link-colour;
+    text-decoration: none;
+    &:hover {
+      color: @link-hover-colour;
+      text-decoration: underline;
+    }
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.no-mathml {
+  @import (less) 'katex/dist/katex.min.css';
+
+  .katex .katex-mathml {
+    display: none;
+  }
+  .katex .katex-html {
+    display: inline-block;
+  }
+}
+
+.mathml {
+  .katex .katex-html {
+    display: none;
+  }
+  .katex .katex-mathml {
+    display: inline-block;
+  }
+}
+
+
+.gist {
+  .line-data {color: #80CBC4; background: #263238; }
+  .file-data {color: #80CBC4; background: #111; }
+  .line-numbers {color: #80CBC4; background: #263238; }
+  .gist-meta {color: #80CBC4; background: #080a10; }
+  .gist-data {border-color: #333; background: #1C262B; }
+  .gist-file {border-color: #333;}
+  .pl-vo { color: #82AAFF; }
+  .pl-v { color: #82AAFF; }
+  .pl-vpf { color: #82AAFF; }
+  .pl-en { color: #5cb6ff; }
+  .pl-c1 { color: #eee; }
+  .pl-s3 { color: #cdcf38; }
+  .pl-k { color: #eee; font-weight: bold; }
+  .pl-st { color: #FF5370; }
+  .pl-s1 {  color: #F07178; }
+  .pl-pds {  color: #888; }
+  .pl-s {  color: #888; }
+  .pl-smi {  color: #82AAFF; }
+
+  .blob-num {color: #EEFFFF ; background: #080a10; }
+  .blob-code {color: #C3E88D; background: #000208; }
+  .js-file-line-container { background: #263238; }
+  .blob-code-inner { color: #EEFFFF; }
+  td {border-color: #181b1d; }
+}
+
+.post-snippet-container {
+  .readmore {
+    display: none;
+  }
+}
