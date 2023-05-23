@@ -41,7 +41,7 @@ jobs:
       - name: Add analytics
         env:
           ANALYTICS_TAG: ${{ vars.ANALYTICS_TAG }}
-        run: sed -i -e 's|<\/head>|'"$ANALYTICS_TAG"'</head>|' ./dist/index.html
+        run: sed -i -e 's|<\/head>|'"$ANALYTICS_TAG"'</head>|' ./dist/blog/index.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:          
