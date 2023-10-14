@@ -37,6 +37,10 @@ jobs:
       - run: npm run build
         env:
           NODE_ENV: production
+      - name: Add analytics
+        env:
+          ANALYTICS_TAG: ${{ vars.ANALYTICS_TAG }}
+        run: sed -i -e 's|<\/head>|'"$ANALYTICS_TAG"'</head>|' ./dist/index.html
       - run: cp ./dist/blog/index.html ./dist/blog/404.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
