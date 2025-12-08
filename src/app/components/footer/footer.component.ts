@@ -3,8 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.less']
+  styleUrls: ['./footer.component.less'],
+  standalone: false,
 })
-export class FooterComponent {
-
-}
+export class FooterComponent {}

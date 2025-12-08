@@ -5,15 +5,13 @@ import { PostSummaryService } from 'src/app/services/post.summary/post.summary.s
 @Component({
   selector: 'app-summary',
   templateUrl: './summary.component.html',
-  styleUrls: ['./summary.component.less']
+  styleUrls: ['./summary.component.less'],
+  standalone: false,
 })
 export class SummaryComponent {
-
   _posts: PostSummary[] = [];
 
-  constructor(
-    private postSummaryService: PostSummaryService
-  ) { }
+  constructor(private postSummaryService: PostSummaryService) {}
 
   ngOnInit(): void {
     this.fetchPosts();
@@ -26,12 +24,11 @@ export class SummaryComponent {
       },
       error: (error) => {
         console.log(error);
-      }
+      },
     });
   }
 
   getPosts(): PostSummary[] {
     return this._posts;
   }
-
 }
