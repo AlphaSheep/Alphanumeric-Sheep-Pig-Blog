@@ -8,10 +8,10 @@ import '../../lib/modernizr.js';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
-  styleUrls: ['./post.component.less']
+  styleUrls: ['./post.component.less'],
+  standalone: false,
 })
 export class PostComponent {
-
   _id: string = '';
   @Input() set id(value: string) {
     this._id = value.replace(/\.html$/, '');
@@ -26,8 +26,8 @@ export class PostComponent {
     private sanitizer: DomSanitizer,
     private changes: ChangeDetectorRef,
     private view: ViewContainerRef,
-    private titleService: Title,
-  ) { }
+    private titleService: Title
+  ) {}
 
   ngOnInit(): void {
     this.fetchPost();
@@ -42,19 +42,19 @@ export class PostComponent {
 
         this.changes.detectChanges();
         // This is a once-off, we don't want the innerHTML to bind
-        this.view.element.nativeElement.querySelector('.post-content').innerHTML = this.post.content;
+        this.view.element.nativeElement.querySelector(
+          '.post-content'
+        ).innerHTML = this.post.content;
         this.changes.detectChanges();
 
         fixGists(this.view.element);
         fixLatex(this.view.element);
 
-
         // this.changes.detectChanges();
-
       },
       error: (error) => {
         console.log(error);
-      }
+      },
     });
   }
 
@@ -68,10 +68,14 @@ export class PostComponent {
   getPublishedDate() {
     if (this.post) {
       const date = new Date(this.post.published);
-      let year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(date);
+      let year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(
+        date
+      );
       let month = new Intl.DateTimeFormat('en', { month: 'long' }).format(date);
       let day = new Intl.DateTimeFormat('en', { day: 'numeric' }).format(date);
-      let weekday = new Intl.DateTimeFormat('en', { weekday: 'long' }).format(date);
+      let weekday = new Intl.DateTimeFormat('en', { weekday: 'long' }).format(
+        date
+      );
 
       return `${weekday}, ${day} ${month} ${year}`;
     }
@@ -81,7 +85,11 @@ export class PostComponent {
   getPublishedTime() {
     if (this.post) {
       const date = new Date(this.post.published);
-      let hour = new Intl.DateTimeFormat('en', { hour: 'numeric', minute: '2-digit', hourCycle: 'h12' }).format(date);
+      let hour = new Intl.DateTimeFormat('en', {
+        hour: 'numeric',
+        minute: '2-digit',
+        hourCycle: 'h12',
+      }).format(date);
 
       return `${hour}`.toUpperCase();
     }
