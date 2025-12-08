@@ -25,6 +25,9 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
+    env:
+      OUTPUT_DIR: ./dist/blog/browser
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -40,12 +43,12 @@ jobs:
       - name: Add analytics
         env:
           ANALYTICS_TAG: ${{ vars.ANALYTICS_TAG }}
-        run: sed -i -e 's|<\/head>|'"$ANALYTICS_TAG"'</head>|' ./dist/blog/index.html
-      - run: cp ./dist/blog/index.html ./dist/blog/404.html
+        run: sed -i -e 's|<\/head>|'"$ANALYTICS_TAG"'</head>|' ${{ env.OUTPUT_DIR }}/index.html
+      - run: cp ${{ env.OUTPUT_DIR }}/index.html ${{ env.OUTPUT_DIR }}/404.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist/blog'
+          path: ${{ env.OUTPUT_DIR }}
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
