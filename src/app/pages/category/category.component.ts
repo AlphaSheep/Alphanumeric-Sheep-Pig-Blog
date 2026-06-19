@@ -1,12 +1,13 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { PostSummary } from 'src/app/interfaces/post.summary';
-import { PostSummaryService } from 'src/app/services/post.summary/post.summary.service';
+import { PostSummary } from 'app/interfaces/post.summary';
+import { PostSummaryService } from 'app/services/post.summary/post.summary.service';
 
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.less'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class CategoryComponent {

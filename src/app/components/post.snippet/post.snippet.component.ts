@@ -1,12 +1,13 @@
-import { Component, Input, ChangeDetectorRef, ViewContainerRef } from '@angular/core';
+import { Component, Input, ChangeDetectorRef, ViewContainerRef, ChangeDetectionStrategy } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Post } from 'src/app/interfaces/post';
-import { PostsService } from 'src/app/services/posts/posts.service';
+import { Post } from 'app/interfaces/post';
+import { PostsService } from 'app/services/posts/posts.service';
 
 @Component({
   selector: 'app-post-snippet',
   templateUrl: './post.snippet.component.html',
   styleUrls: ['./post.snippet.component.less'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class PostSnippetComponent {

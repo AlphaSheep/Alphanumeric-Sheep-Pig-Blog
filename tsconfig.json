@@ -2,8 +2,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "rootDir": "src",
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "strict": true,
@@ -14,6 +14,10 @@
     "sourceMap": true,
     "declaration": false,
     "experimentalDecorators": true,
+    "paths": {
+      "app/*": ["./src/app/*"],
+      "environments/*": ["./src/environments/*"]
+    },
     "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",

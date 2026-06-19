@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
-import { PostSummary } from 'src/app/interfaces/post.summary';
-import { PostSummaryService } from 'src/app/services/post.summary/post.summary.service';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { PostSummary } from 'app/interfaces/post.summary';
+import { PostSummaryService } from 'app/services/post.summary/post.summary.service';
 
 @Component({
   selector: 'app-summary',
   templateUrl: './summary.component.html',
   styleUrls: ['./summary.component.less'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class SummaryComponent {
@@ -19,10 +20,10 @@ export class SummaryComponent {
 
   fetchPosts() {
     this.postSummaryService.getPostsSummary().subscribe({
-      next: (posts) => {
+      next: (posts: PostSummary[]) => {
         this._posts = posts;
       },
-      error: (error) => {
+      error: (error: Error) => {
         console.log(error);
       },
     });

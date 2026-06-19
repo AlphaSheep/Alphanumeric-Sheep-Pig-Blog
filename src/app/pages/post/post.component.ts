@@ -1,7 +1,7 @@
-import { Component, Input, ChangeDetectorRef, ViewChildren, ViewContainerRef, ElementRef } from '@angular/core';
+import { Component, Input, ChangeDetectorRef, ViewChildren, ViewContainerRef, ElementRef, ChangeDetectionStrategy } from '@angular/core';
 import { DomSanitizer, Title } from '@angular/platform-browser';
-import { Post } from 'src/app/interfaces/post';
-import { PostsService } from 'src/app/services/posts/posts.service';
+import { Post } from 'app/interfaces/post';
+import { PostsService } from 'app/services/posts/posts.service';
 import katex from 'katex';
 import '../../lib/modernizr.js';
 
@@ -9,6 +9,7 @@ import '../../lib/modernizr.js';
   selector: 'app-post',
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.less'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class PostComponent {

@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
-import { environment } from 'src/environments/environment';
-import { PostSummary } from 'src/app/interfaces/post.summary';
-import { Category } from 'src/app/interfaces/category';
+import { environment } from 'environments/environment';
+import { PostSummary } from 'app/interfaces/post.summary';
+import { Category } from 'app/interfaces/category';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class PostSummaryService {
 
   constructor(
     private http: HttpClient
-  ) { 
+  ) {
     this.getPostsSummary().subscribe();
   }
 
